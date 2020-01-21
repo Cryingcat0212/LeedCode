@@ -15,7 +15,7 @@ class Solution:
                 d = r
         return
 
-# Tow test_el: one spot determiner, one ele determiner. 把所有不同元素集中在最前面
+# Tow pointers. 把所有不同元素集中在最前面
 # 这是JAVA的实现，有空拿python写一写
 public int removeDuplicates(int[] nums) {
     if (nums.length == 0) return 0;
@@ -29,3 +29,14 @@ public int removeDuplicates(int[] nums) {
     return i + 1;
 }
     
+# Q2: remove given element: 常规思路没什么好说的 主要看一下这一次的two pointers 写法
+public int removeElement(int[] nums, int val) {
+    int i = 0;
+    for (int j = 0; j < nums.length; j++) {
+        if (nums[j] != val) {
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return i;
+}
