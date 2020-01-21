@@ -1,0 +1,31 @@
+# pop elements without dublicate in-place
+
+class Solution:
+# regular thought: remove all the dublicated elements by remove / del 
+    def removeDuplicates_Re(self, nums: List[int]) -> int:
+        if len(nums)<=1: # 特殊情况的处理
+            return
+        
+        nums.sort()
+        d = nums[0]
+        for r in nums[1::]: # 注意序列倒序遍历的写法 and 从第二个元素开始比较以免第一组被删完
+            if r == d:
+                nums.remove(r)
+            else:
+                d = r
+        return
+
+# Tow test_el: one spot determiner, one ele determiner. 把所有不同元素集中在最前面
+# 这是JAVA的实现，有空拿python写一写
+public int removeDuplicates(int[] nums) {
+    if (nums.length == 0) return 0;
+    int i = 0;
+    for (int j = 1; j < nums.length; j++) {
+        if (nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
+}
+    
