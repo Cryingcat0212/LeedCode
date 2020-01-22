@@ -63,4 +63,23 @@ class Solution:
                     l = [nums.index(nums2[i]), nums.index(nums2[j], nums.index(nums2[i])+1)]
                     break
         return l
+        
+   # has unknown logic problem
+  class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in nums:
+            d = target - i
+            if d in nums:
+                l = [i, nums.index(d,i)] # 直接赋值在循环中会被反复刷新
+        return l
 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        l = []
+        for i in nums:
+            d = target - i
+            if d in nums[nums.index(i)+1::]: # 有效避免元素重复使用
+                l.append(nums.index(i))
+                l.append(nums.index(d,nums.index(i)+1))
+                break
+        return l
