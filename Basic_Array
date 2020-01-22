@@ -40,3 +40,27 @@ public int removeElement(int[] nums, int val) {
     }
     return i;
 }
+
+# Q3：tow sum in list
+# 改良版暴力解法 time complicity = O(m!)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        nums2 = nums[:] # 注意！直接 nums2 = nums的话只是指向同一储存位置，也就是说改的是一个东西
+        r = True
+        for k in nums:
+            if k < 0:
+                r =  False
+        if r == True:
+            for k in nums2:
+                if k > 0 > target:
+                    nums2.remove(k)
+        d = 0
+        l = []
+        for i in range (0, len(nums2)-1):
+            d += 1
+            for j in range(d, len(nums2)):
+                if nums2[i] + nums2[j] == target:
+                    l = [nums.index(nums2[i]), nums.index(nums2[j], nums.index(nums2[i])+1)]
+                    break
+        return l
+
