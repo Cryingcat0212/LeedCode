@@ -83,3 +83,24 @@ class Solution:
                 l.append(nums.index(d,nums.index(i)+1))
                 break
         return l
+
+# Q4 PLUS ONE 
+# 逻辑没问题 1/3部分可以合并
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        if digits[-1] != 9:
+            digits[-1] = digits[-1] + 1
+        elif digits == [9]:
+            digits = [1,0]
+        else:
+            digits[-1] = digits[-1] + 1
+            for i in range(len(digits)-1,0,-1):
+                if digits[i] == 10:
+                    digits[i] = 0
+                    digits[i-1] += 1
+                    
+        if digits[0] == 10:
+            digits[0] = 0
+            digits.insert(0,1) # append是在末尾加 O(arg) == 1, insert(index,obj)
+        return digits
+            
