@@ -113,4 +113,6 @@ class Solution:
         
         plus1 = list(str(int(concat)+1))
             
-        return plus1        
+        return plus1
+
+# ! 列表切片左闭右开 ！
