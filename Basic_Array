@@ -103,4 +103,14 @@ class Solution:
             digits[0] = 0
             digits.insert(0,1) # append是在末尾加 O(arg) == 1, insert(index,obj)
         return digits
+ # 整体转换为整数然后加一分开 运用列表与str互转之间的性质
+ class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        concat = ''
+        for num in range(len(digits)):
+            numbers = digits[num]
+            concat = concat + str(numbers)
+        
+        plus1 = list(str(int(concat)+1))
             
+        return plus1        
