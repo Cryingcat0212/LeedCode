@@ -140,5 +140,15 @@ class Solution:
             triangle.append(rows)
         
         return triangle
-                
-        
+# so fking elegant
+# 做视野思路
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        minp = 999999
+        maxpr = 0
+        for i in prices:
+            if i < minp:
+                minp = i
+            elif (i - minp) > maxpr:
+                maxpr = i - minp
+        return maxpr
