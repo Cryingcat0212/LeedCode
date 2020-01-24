@@ -116,3 +116,29 @@ class Solution:
         return plus1
 
 # ! 列表切片左闭右开 ！
+
+# Q5: move all zeros to the end
+   i = len(nums) - 1
+
+    while i >= 0:
+        if nums[i] == 0:
+            nums.pop(i)
+            nums.append(0)
+        i -= 1
+# related to index, from last to first is always the best
+
+#  我永远都不懂怎么写出杨辉三角
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        triangle = []
+        for row_nums in range(0,numRows):
+            rows = [None for i in range(row_nums+1)]
+            rows[0],rows[-1] = 1,1
+            
+            for j in range(1, len(rows)-1):
+                rows[j] = triangle[row_nums-1][j-1] + triangle[row_nums-1][j]
+            triangle.append(rows)
+        
+        return triangle
+                
+        
