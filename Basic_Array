@@ -152,3 +152,36 @@ class Solution:
             elif (i - minp) > maxpr:
                 maxpr = i - minp
         return maxpr
+        
+# Q5: maxmum sub
+# 写的真tm好
+def maxSubArray(self, nums: List[int]) -> int:
+		ans, current = nums[0], -1
+		for num in nums:
+			current = num if current < 0 else current+num # 这玩意儿非常好用
+			ans = current if ans < current else ans
+		return ans
+        
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxs = max(nums)
+        t = nums[0]
+        if len(nums) == 1:
+            return nums[0]
+        
+        for i in range(1, len(nums)):
+            t = t + nums[i]
+            d = nums[i] + nums[i-1]
+            print(t,d)
+            if d >= t:
+                t = d
+            if t > maxs:
+                maxs = t
+        return maxs
+                
+          
+                
+                
+          
+                
+                
