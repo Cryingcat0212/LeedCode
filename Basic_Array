@@ -199,7 +199,31 @@ class Solution:
             if num in seen:
                 return num
             seen.add(num)  # time complicity 0(n)
-      
+# 我是个天才
+# merge intervals
+# set真的是一个无序集合 只是大不部分时候意外有序 集合性质很好用 
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        if intervals == []:
+            return []
+        intervals.sort() # 集合已经没有排序方法了
+        for s in range(0, len(intervals)):
+            ed = intervals[s][1]+1
+            intervals[s] = set(list(range(intervals[s][0], ed)))
+            print(intervals[s])
+        l = intervals[0]
+        t = []
+        intervals.append(set())
+        for i in range(1,len(intervals)):
+            if l.intersection(intervals[i]) != set():
+                l = l.union(intervals[i])
+            else:
+                l2 = list(l)
+                l2.sort()
+                t.append([l2[0], l2[-1]])
+                l = intervals[i]
+        return t
+    
           
                 
                 
