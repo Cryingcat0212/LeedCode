@@ -178,7 +178,28 @@ class Solution:
             if t > maxs:
                 maxs = t
         return maxs
-                
+
+# Q6：find the duplicated number
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+        s = list(set(nums))
+        d = int(len(s)/2)
+        if s[d] > nums[d]:
+            nums1 = nums[0:d+1]
+        else:
+            nums1 = nums[d::]
+        for i in nums1:
+            if nums1.count(i)>1: # individual count has time complicity O(n)
+                return i # so the total tc is O(2/n^)
+class Solution:
+    def findDuplicate(self, nums):
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return num
+            seen.add(num)  # time complicity 0(n)
+      
           
                 
                 
