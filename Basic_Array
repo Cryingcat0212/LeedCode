@@ -223,7 +223,24 @@ class Solution:
                 t.append([l2[0], l2[-1]])
                 l = intervals[i]
         return t
-    
+ 
+# 正常人类的解题方式
+class Solution:
+    def merge(self, intervals):
+        intervals.sort(key=lambda x: x.start)
+
+        merged = []
+        for interval in intervals:
+            # if the list of merged intervals is empty or if the current
+            # interval does not overlap with the previous, simply append it.
+            if not merged or merged[-1].end < interval.start:
+                merged.append(interval)
+            else:
+            # otherwise, there is overlap, so we merge the current and previous
+            # intervals.
+                merged[-1].end = max(merged[-1].end, interval.end)
+
+        return merged
           
                 
                 
